@@ -19,8 +19,6 @@ import html
 path = os.getcwd()
 
 
-
-
 ### HTML-File finden ###########################################################
 
 files = glob.glob(path + "/*")
@@ -33,23 +31,18 @@ for i in files:
         print(work_file)
 
 
-
-
 ### HTML-File durchsuchen ######################################################
 
 f = open(work_file,"r", encoding="utf-8")
 
-
 ### Kompletter File-Inhalt als String(/Liste) 
+
 text = f.read()
 f.close()
 
 
-
-
-
-#####  Variable "text" nach in neue Liste aufteilen, Elemente auf target_words durchsuchen, Elemente einkürzen
-########################################################################
+#####  Variable "text" in neue Liste aufteilen, Elemente auf target_words durchsuchen, Elemente einkürzen
+##########################################################################################################
 
 html_list = text.split('><')
 
@@ -57,28 +50,23 @@ title_list = []
 
 for i in html_list:
     if re.search('span.+trackTitle_.+', i):
-        title_esc = i.split('>')[1].split('<')[0]                       # Den ersten Split nochmals splitten, jeweils angesprochen über Indeces der durch split() entstehenden Listen
+        title_esc = i.split('>')[1].split('<')[0]                       # Den ersten Split nochmals splitten, jeweils angesprochen über Indizes der durch split() entstehenden Listen
         #print(title_esc)
-        title = html.unescape(title_esc)								# converts HTML-EscapeCHaracters to String
+        title = html.unescape(title_esc)				# converts HTML-EscapeCharacters to String
         #print(title)
         title_list.append(title)
         #break
 
 
-
-
-
 ##### Ergebnisse im richtigen Format in TXT schreiben
 ########################################################################
 
-
 print('\n\ntitle_list: \n')
-
 
 end_format = open("end_format.txt","w")
 
 for cnt, i in enumerate(title_list, start=1):
-	if cnt != len(title_list):							# if nicht letzter_SongTitel
+	if cnt != len(title_list):					# if nicht letzter_SongTitel
 		end_format.write(i)
 		end_format.write(' ; \n')
 		print(cnt, i)
@@ -88,15 +76,11 @@ for cnt, i in enumerate(title_list, start=1):
 		
 end_format.close()
 
-
 print('\n\nAnzahl der ermittelten Songs  : ', len(title_list))
 
 
-
-
-
-##### geschriebene TXT in (EDITOR-)PROZESS-FENSTER öffnen (Inhalt zum kopieren bereit) , nachFrage wieder SCHLIEßEN & LÖSCHEN
-########################################################################
+##### geschriebene TXT in (EDITOR-)PROZESS-FENSTER öffnen (Inhalt zum kopieren bereit), nach_Frage wieder SCHLIEßEN & LÖSCHEN
+##############################################################################################################################
 
 ###  ÖFFNEN  ###
 import subprocess
