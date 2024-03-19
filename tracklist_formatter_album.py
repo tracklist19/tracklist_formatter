@@ -76,7 +76,6 @@ for cnt, i in enumerate(title_list, start=1):
 		
 end_format.close()
 
-
 print('\n\nAnzahl der ermittelten Songs  : ', len(title_list))
 
 
