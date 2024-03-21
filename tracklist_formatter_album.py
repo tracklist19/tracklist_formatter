@@ -50,9 +50,9 @@ title_list = []
 
 for i in html_list:
     if re.search('span.+trackTitle_.+', i):
-        title_esc = i.split('>')[1].split('<')[0]                       # Den ersten Split nochmals splitten, jeweils angesprochen über Indizes der durch split() entstehenden Listen
+        title_esc = i.split('>')[1].split('<')[0]                       		# Den ersten Split nochmals splitten, jeweils angesprochen über Indizes der durch split() entstehenden Listen
         #print(title_esc)
-        title = html.unescape(title_esc)								# converts HTML-EscapeCharacters to String
+        title = html.unescape(title_esc)						# converts HTML-EscapeCharacters to String
         #print(title)
         title_list.append(title)
         #break
@@ -66,7 +66,7 @@ print('\n\ntitle_list: \n')
 end_format = open("end_format.txt","w",encoding="utf-8")
 
 for cnt, i in enumerate(title_list, start=1):
-	if cnt != len(title_list):											# if nicht letzter_SongTitel
+	if cnt != len(title_list):							# if nicht letzter_SongTitel
 		end_format.write(i)
 		end_format.write(' ; \n')
 		print(cnt, i)
