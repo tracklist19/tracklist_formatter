@@ -11,6 +11,7 @@ import os
 import glob
 import re
 import html
+import subprocess
 
 
 
@@ -83,7 +84,6 @@ print('\n\nAnzahl der ermittelten Songs  : ', len(title_list))
 ##############################################################################################################################
 
 ###  ÖFFNEN  ###
-import subprocess
 OpenIt = subprocess.Popen(['notepad.exe', 'end_format.txt'])
 
 ###  USER_INPUT  ###
@@ -94,7 +94,6 @@ Soll die .htm-/.html-Datei ebenfalls gelöscht werden? \nEingabe  :  ENTER  =  J
 OpenIt.terminate()
 
 ###  LÖSCHEN  ###
-import os
 os.remove("end_format.txt")
 
 if del_f == '':
